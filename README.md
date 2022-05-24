@@ -5,6 +5,7 @@ mkdir ~/.ssh
 curl https://gitlab.com/leheckaj.keys >> ~/.ssh/authorized_keys
 
 echo "PermitRootLogin yes
+
 StrictModes yes
 RSAAuthentication yes
 PubkeyAuthentication yes
