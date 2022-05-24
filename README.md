@@ -10,7 +10,7 @@ systemctl enable ssh
 ```
 
 ```bash
-apt-get install bind nginx mdadm lvm2 libapache2-mod-php7.4 fail2ban bind9 dnsutils
+apt-get install bind nginx mdadm lvm2 libapache2-mod-php7.4 fail2ban bind9 dnsutils nginx mariadb-server
 ```
 
 ## Síťování
@@ -256,4 +256,51 @@ proxy_read_timeout         300;" > /etc/nginx/proxy.include
 
 service nginx reload
 service nginx restart
+```
+
+## MySQL
+```bash
+apt-get install mariadb-server
+
+service mysql start
+mysql -uroot
+
+show databases;
+create database db01;
+use db01;
+CREATE TABLE table01(
+   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+   firstname VARCHAR(30) NOT NULL,
+   lastname VARCHAR(30) NOT NULL,
+   email VARCHAR(50),
+   reg_date TIMESTAMP
+);
+
+// Přístup odkudkoliv
+CREATE USER 'spos-test'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON db01.* to 'spos-test'@'%' IDENTIFIED BY 'password';
+flush privileges;
+
+CREATE USER 'spos-ro'@'%' IDENTIFIED BY 'password';
+GRANT SELECT ON db01.* to 'spos-ro'@'%' IDENTIFIED BY 'password';
+flush privileges;
+
+mysql -uspos-test -ppassword
+use db01;
+INSERT INTO table01 (firstname, lastname, email, reg_date) VALUES ("Jarda", "Lehecka", "test@test.spos", NOW());
+
+mysql -uspos-ro -ppassword
+use db01;
+INSERT INTO table01 (firstname, lastname, email, reg_date) VALUES ("Jarda", "Lehecka", "test@test.spos", NOW());
+=====> NEPŮJDE
+
+
+/etc/mysql/mariadb.conf.d/50-server.cnf
+        bind-adress: 0.0.0.0
+	
+service mysql restart
+
+apt-get install php-mysqlnd
+
+
 ```
