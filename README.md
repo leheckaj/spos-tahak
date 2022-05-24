@@ -12,6 +12,15 @@ systemctl enable ssh
 ```bash
 apt-get install bind nginx mdadm lvm2 libapache2-mod-php7.4 fail2ban bind9 dnsutils nginx mariadb-server
 ```
+## Obnova rozbořeného disku
+- Recovery mode
+- mount -t ext4 -o rw,remount /dev/sda1 /
+- blkid
+- echo "UUID=52e062e0-716c-4828-9bf1-05b93fdaef93 / ext4 errors=remount-ro 0 1" > /etc/fstab
+- Následně budu schopen rebootu
+- zdroj:
+- https://askubuntu.com/questions/435965/accidentally-deleted-etc-fstab-file
+
 
 ## Síťování
 ```bash
