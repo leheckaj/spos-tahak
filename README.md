@@ -411,3 +411,22 @@ telnet localhost 143
 ```
 
 ## NFS, Samba
+```bash
+mkdir /srv/share{1,2,3}
+vim /etc/exports
+
+/srv/share1       10.228.67.0/24(rw) 147.228.67.0/24(ro)
+/srv/share2       10.228.67.0/24(rw,no_root_squash)
+/srv/share3       10.228.67.0/24(rw,no_subtree_check,
+                            all_squash,anonuid=6000,anongid=6000)
+
+chmod 777 /srv/share1
+
+ip a a 10.228.67.50/24 dev ens18
+
+mkdir /mnt/share{1,2,3}
+mount -t nfs  10.228.67.50:/srv/share1 /mnt/share1
+
+touch test.txt
+ls -al
+```
