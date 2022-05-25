@@ -349,4 +349,45 @@ $conn->close();
 ?>
 ```
 
+## Postfix
 
+apt-get install postfix
+apt-get install mailutils
+apt-get install mutt
+
+```bash
+awk '$1 == "mynetworks"  {$1 = "#mynetworks"} {print} ' /etc/postfix/main.cf  > /etc/postfix/main.cf.edit
+awk '$1 == "myhostname"  {$1 = "#myhostname"} {print} ' /etc/postfix/main.cf.edit  > /etc/postfix/main.cf.edit2
+
+echo "myhostname=mail.$domain" >> /etc/postfix/main.cf.edit2
+echo "mynetworks=192.168.0.0/24" >> /etc/postfix/main.cf.edit2
+echo "mydomain=$domain" >> /etc/postfix/main.cf.edit2
+echo "home_mailbox=Maildir/" >> /etc/postfix/main.cf.edit2
+echo "mailbox_command =" >> /etc/postfix/main.cf.edit2
+
+rm /etc/postfix/main.cf.edit
+mv /etc/postfix/main.cf.edit2 /etc/postfix/main.cf
+
+
+service postfix restart
+mutt -f ~/Maildir
+```
+
+## Dovecot IMAP
+
+apt-get install dovecot-imapd
+
+```bash
+echo "listen = *, ::" >> /etc/dovecot/dovecot.conf
+
+V /etc/dovecot/conf.d/10-mail.conf uprav mail_location
+mail_location:~/Maildir
+
+Sekci auth v /etc/dovecot/conf.d/10-master.conf  pozměň na:
+# Postfix smtp-auth
+unix_listener /var/spool/postfix/private/auth {
+  mode = 0666
+  user = postfix
+  group = postfix
+ }
+```
