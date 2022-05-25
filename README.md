@@ -391,3 +391,23 @@ unix_listener /var/spool/postfix/private/auth {
   group = postfix
  }
 ```
+
+```bash
+Z roota:
+echo "Test" | mail -s "Testovaci mail" pepa@test.spos
+su - pepa
+mutt -f ~/Maildir/
+```
+
+```bash
+telnet localhost 143
+# https://tools.ietf.org/html/rfc3501
+1 LOGIN pepa pepa
+2 LIST "" "*"
+3 STATUS INBOX (MESSAGES)
+4 EXAMINE INBOX
+5 FETCH 1 BODY[]
+6 LOGOUT
+```
+
+## NFS, Samba
