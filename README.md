@@ -38,6 +38,11 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
 ## Zabezpečení operačního systému Linux
 
 ```bash
+apt-get install fail2ban
+
+
+FAIL2BAN !!!!!
+
 mkdir ~/.ssh
 curl https://gitlab.com/leheckaj.keys >> ~/.ssh/authorized_keys
 
