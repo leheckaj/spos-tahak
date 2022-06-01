@@ -349,6 +349,62 @@ $conn->close();
 ?>
 ```
 
+## Postgres
+
+```bash
+apt-get install postgresql php-pgsql
+apt --purge remove postgresql-13 -y
+
+psql db01
+\c db01
+
+\d table01
+\dt
+-----------------------------------
+psql
+CREATE USER db01 WITH PASSWORD 'pasword';
+CREATE DATABASE db01 WITH OWNER=db01;
+\c db01
+CREATE TABLE table01(
+   id SERIAL PRIMARY KEY,
+   firstname VARCHAR(30) NOT NULL,
+   lastname VARCHAR(30) NOT NULL,
+   email VARCHAR(50),
+   reg_date TIMESTAMP
+);
+GRANT ALL PRIVILEGES ON TABLE table01 to db01;
+\q
+------------------------------------
+psql postgresql://db01:pasword@127.0.0.1 db01
+INSERT INTO table01(firstname, lastname, email, reg_date) values ('Jarda', 'Lehecka', 'mail', now());
+SELECT * FROM table01;
+\q
+------------------------------
+psql
+\c db01
+DROP TABLE table01;
+\q
+psql
+DROP database db01;
+DROP user db01;
+\q
+```
+
+
+## Hromadné generování
+
+```bash
+INSERT INTO table01(firstname, lastname, email, reg_date) values ('Jarda', 'Lehecka', 'mail', now());
+
+for i in `seq 1 2`; do 
+   echo "INSERT INTO table01(firstname, lastname, email, reg_date) values ('Jarda', 'Lehecka', 'mail@mail.spos', now());" | psql db01
+done
+
+for i in `seq 1 50`; do 
+   echo "INSERT INTO table01(firstname, lastname, email, reg_date) values ('Jarda', 'Lehecka', 'mail@mail.spos', now());" | mysql db01
+done
+```
+
 ## Postfix
 
 apt-get install postfix
