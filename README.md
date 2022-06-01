@@ -66,6 +66,8 @@ echo "post-up /sbin/iptables-restore /etc/network/iptables" > /etc/network/inter
 
 ## RAID
 ```bash
+apt install mdadm
+
 mdadm --create --verbose /dev/md0 --level=5 --raid-devices=3 /dev/sd[bcd]
 mdadm --stop /dev/md0
 mdadm --remove /dev/md0
@@ -86,7 +88,6 @@ cat /proc/mdstat
 
 ## LVM
 ```bash
-apt install mdadm
 apt install lvm2
 --------------------TVORBA---------------------------
 pvcreate /dev/vdb
@@ -202,10 +203,10 @@ host test.spos 192.168.0.224
 ```
 
 ## Apache2 práce pro zákaz na rozjetí na vícero portech
+```bash
 apt-get install libapache2-mod-php7.4
 Instalace php + apache
 
-```bash
 awk '$2 == "*:80>"  {$2 = "*:8080>"} {print} ' /etc/apache2/sites-available/000-default.conf  > /etc/apache2/sites-available/port1.conf
 awk '$2 == "*:80>"  {$2 = "*:8181>"} {print} ' /etc/apache2/sites-available/000-default.conf  > /etc/apache2/sites-available/port2.conf
 
@@ -229,10 +230,33 @@ Listen 8181
 Listen 8080
 ```
 
+## Apache2 rozjetí šifrované části
+```bash
+Do /etc/apache2/sites-available/... přidám:
+
+	<Location /secret>
+                AuthType Basic
+                AuthName "Restricted Access"
+                AuthUserFile /etc/apache2/.htpasswd
+                Require user pepa
+        </Location>
+
+mkdir /var/www/html/secret
+htpasswd -c /etc/apache2/.htpasswd pepa
+echo "tst" > /var/www/html/secret/tajne.txt
+curl http://pepa:123@127.0.0.1:80/secret/tajne.txt
+
+
+Zabezpečení PHPMyAdmin zde:
+https://www.linode.com/docs/guides/how-to-secure-phpmyadmin/   ----> Setting Up Password Based Authentication
+http://192.168.0.250/phpmyadmin-jwef82r68662b/index.php
+pepa/pepa
+```
+
 ## Nginx HA
+```bash
 apt-get install nginx
 
-```bash
 Zkontroluj:
 
 echo "
