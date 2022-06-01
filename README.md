@@ -407,11 +407,12 @@ done
 
 ## Postfix
 
+```bash
 apt-get install postfix
 apt-get install mailutils
 apt-get install mutt
 
-```bash
+
 awk '$1 == "mynetworks"  {$1 = "#mynetworks"} {print} ' /etc/postfix/main.cf  > /etc/postfix/main.cf.edit
 awk '$1 == "myhostname"  {$1 = "#myhostname"} {print} ' /etc/postfix/main.cf.edit  > /etc/postfix/main.cf.edit2
 
@@ -431,9 +432,10 @@ mutt -f ~/Maildir
 
 ## Dovecot IMAP
 
+```bash
 apt-get install dovecot-imapd
 
-```bash
+
 echo "listen = *, ::" >> /etc/dovecot/dovecot.conf
 
 V /etc/dovecot/conf.d/10-mail.conf uprav mail_location
