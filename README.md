@@ -466,8 +466,10 @@ telnet localhost 143
 6 LOGOUT
 ```
 
-## NFS, Samba
+## NFS
 ```bash
+apt-get install nfs-server
+
 mkdir /srv/share{1,2,3}
 vim /etc/exports
 
@@ -485,4 +487,29 @@ mount -t nfs  10.228.67.50:/srv/share1 /mnt/share1
 
 touch test.txt
 ls -al
+```
+## Samba
+```bash
+apt-get install samba smbclient cifs-utils -y
+
+echo "
+[share1]
+        comment = Prvni share co jsem kdy vyrobili
+        path = /srv/test
+        browsable = yes        
+	writable = yes
+        guest ok = yes
+        create mask = 0600
+        valid users = jindra
+        directory mask = 0700" >> /etc/samba/smb.conf
+
+adduser jindra
+smbpasswd -a jindra
+addgroup --gid 6001 cifs
+usermod -G cifs jindra
+
+mount -t cifs //localhost/share1 /mnt/test -o username=jindra
+
+/etc/samba/smb.conf:
+
 ```
