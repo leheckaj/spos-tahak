@@ -11,6 +11,9 @@ systemctl enable ssh
 
 ```bash
 apt-get install bind9 nginx mdadm lvm2 libapache2-mod-php7.4 fail2ban bind9 dnsutils nginx mariadb-server
+
+Speciální složky:
+mkdir $(date +%Y-%m-%d-%H-%M-%S)
 ```
 ## Obnova rozbořeného disku
 - Recovery mode
