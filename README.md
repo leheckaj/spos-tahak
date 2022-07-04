@@ -14,6 +14,8 @@ apt-get install bind9 nginx mdadm lvm2 libapache2-mod-php7.4 fail2ban bind9 dnsu
 
 Speciální složky:
 mkdir $(date +%Y-%m-%d-%H-%M-%S)
+
+https://crontab.guru/#0_0-23_*_*_6,0
 ```
 ## Obnova rozbořeného disku
 - Recovery mode
