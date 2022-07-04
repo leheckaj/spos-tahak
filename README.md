@@ -350,6 +350,15 @@ mysqldump db01 | gzip > db01.sql.gz
 mysql >>>>>>>>>>>> delete from table01;
 gunzip -c db01.sql.gz | mysql -udb01 -ppassword db01
 
+
+Změna root hesla:
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('somepassword');
+
+Hacknutí mysql databáze:
+mysqld_safe --skip-grant-tables
+
+
+
 ```
 
 
