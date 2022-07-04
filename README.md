@@ -522,9 +522,33 @@ Z roota:
 echo "Test" | mail -s "Testovaci mail" pepa@test.spos
 su - pepa
 mutt -f ~/Maildir/
+```
 
+```bash
+Odlišná hesla na mail, než má uživatel na serveru:
 https://serverfault.com/questions/733021/how-to-make-dovecot-password-independent-of-server-password
 https://serverfault.com/questions/357053/how-do-i-change-dovecot-virtual-user-passwords/440616#440616
+
+# /etc/dovecot/dovecot.conf
+
+passdb {
+  driver = passwd-file
+  args = /etc/dovecot/passwd
+}
+userdb {
+  driver = passwd
+}
+
+
+#  /etc/dovecot/passwd
+adminit:{CRYPT}zVQDPzjspy1¨ů§26asdfgkxS¨s))¨)_đls-§jbbl¨¨§oSDH.ksh-§
+
+Generování hashe:
+
+$ doveadm pw -s CRYPT
+Enter new password: 
+Retype new password: 
+{CRYPT}1cElWVzS3.EVg
 ```
 
 ```bash
