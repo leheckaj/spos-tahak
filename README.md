@@ -522,6 +522,9 @@ Z roota:
 echo "Test" | mail -s "Testovaci mail" pepa@test.spos
 su - pepa
 mutt -f ~/Maildir/
+
+https://serverfault.com/questions/733021/how-to-make-dovecot-password-independent-of-server-password
+https://serverfault.com/questions/357053/how-do-i-change-dovecot-virtual-user-passwords/440616#440616
 ```
 
 ```bash
