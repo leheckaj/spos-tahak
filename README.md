@@ -38,6 +38,15 @@ ip route add default via 192.168.1.1
 
 více na:
 https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf
+
+# vi /etc/network/interfaces
+iface enp0s3 inet dhcp
+
+iface enp0s3 inet static
+address 192.168.56.202
+netmask 255.255.255.0
+
+# ifdown  enp0s3 && ifup  enp0s3
 ```
 
 ## Zabezpečení operačního systému Linux
