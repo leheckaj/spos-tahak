@@ -361,9 +361,14 @@ mysqld_safe --skip-grant-tables
 
 Změna root hesla:
 FLUSH PRIVILEGES;
-ALTER USER root@localhost IDENTIFIED VIA mysql_native_password 
-USING PASSWORD('my secret password');
+ALTER USER root@localhost IDENTIFIED VIA mysql_native_password USING PASSWORD('adminit');
 FLUSH PRIVILEGES;
+
+
+cat ~/.my.cnf
+[client]
+user=root
+password=adminit
 
 ```
 
