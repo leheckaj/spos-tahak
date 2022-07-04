@@ -356,9 +356,14 @@ SET PASSWORD FOR 'root'@'localhost' = PASSWORD('somepassword');
 FLUSH PRIVILEGES;
 
 Hacknutí mysql databáze:
+https://stackoverflow.com/questions/7534056/mysql-root-password-change
 mysqld_safe --skip-grant-tables
 
-
+Změna root hesla:
+FLUSH PRIVILEGES;
+ALTER USER root@localhost IDENTIFIED VIA mysql_native_password 
+USING PASSWORD('my secret password');
+FLUSH PRIVILEGES;
 
 ```
 
