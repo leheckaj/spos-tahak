@@ -353,6 +353,7 @@ gunzip -c db01.sql.gz | mysql -udb01 -ppassword db01
 
 Změna root hesla:
 SET PASSWORD FOR 'root'@'localhost' = PASSWORD('somepassword');
+FLUSH PRIVILEGES;
 
 Hacknutí mysql databáze:
 mysqld_safe --skip-grant-tables
