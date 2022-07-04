@@ -137,6 +137,10 @@ lvcreate -n db -L 4M data
 mkfs.ext4 /dev/data/db
 
 e2label /dev/data/db db-label
+
+pro XFS:
+xfs_admin -L "/newlabel" /dev/sdb1 
+
 mkdir /opt/share
 echo "LABEL=db-label     /opt/share    ext4   defaults 0 0"  >> /etc/fstab
 mount -a
