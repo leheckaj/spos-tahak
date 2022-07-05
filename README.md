@@ -378,6 +378,8 @@ FLUSH PRIVILEGES;
 ALTER USER root@localhost IDENTIFIED VIA mysql_native_password USING PASSWORD('adminit');
 FLUSH PRIVILEGES;
 
+Případně pro verzi 10.3:
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('mypass');
 
 cat ~/.my.cnf
 [client]
