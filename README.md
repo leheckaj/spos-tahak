@@ -120,6 +120,7 @@ cat /proc/mdstat
 
 mkfs.ext4 /dev/data/db
 nebo:
+apt-get install xfsprogs
 mkfs.xfs /dev/data/db
 mount /dev/data/db /mnt/
 
