@@ -660,3 +660,9 @@ docker container stop postgres
 docker container start postgres
 docker container start redmine
 ```
+
+## Užitečné návody
+```bash
+Nextcloud
+https://ubunlog.com/cs/como-instalar-nextcloud-16-en-ubuntu-y-derivados/
+```
