@@ -478,6 +478,11 @@ done
 ## Postfix
 
 ```bash
+https://help.clouding.io/hc/en-us/articles/360010669440-Install-and-Configure-Mail-Server-with-Postfix-Admin
+http://192.168.1.231/postfixadmin/public/edit.php?table=domain
+https://linuxize.com/post/install-and-configure-roundcube-webmail/
+https://www.exratione.com/2019/02/a-mailserver-on-ubuntu-18-04-postfix-dovecot-mysql/
+
 apt-get install postfix
 apt-get install mailutils
 apt-get install mutt
