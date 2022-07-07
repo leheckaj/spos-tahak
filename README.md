@@ -643,5 +643,7 @@ docker rm redmine
 
 docker container run -d --name postgres --network redmine_network -v postgres-data:/var/lib/postgresql/data --restart always  -e POSTGRES_PASSWORD='password' -e POSTGRES_DB='redmine'  postgres:latest
 
-docker container run -d --name redmine  --network redmine_network -p 80:3000 --restart always  -v redmine-data:/usr/src/redmine/files -e REDMINE_DB_POSTGRES='postgres'  -e REDMINE_DB_DATABASE='redmine'  -e REDMINE_DB_PASSWORD='password'   redmine:latest
+docker container run -d --name redmine  --network redmine_network -p 85:3000 --restart always  -v redmine-data:/usr/src/redmine/files -e REDMINE_DB_POSTGRES='postgres'  -e REDMINE_DB_DATABASE='redmine'  -e REDMINE_DB_PASSWORD='password'   redmine:latest
+
+IP_ADRESA:85
 ```
