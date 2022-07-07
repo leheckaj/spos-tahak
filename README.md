@@ -612,3 +612,36 @@ mount -t cifs //localhost/share1 /mnt/test -o username=jindra
 /etc/samba/smb.conf:
 
 ```
+
+## Docker + Redmine (postgres)
+```bash
+apt-get update
+
+apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+mkdir -p /etc/apt/keyrings
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu eoan stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+apt-get update
+
+apt install docker-ce docker-ce-cli containerd.io
+
+mkdir /sys/fs/cgroup/systemd
+
+mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
+
+docker rm postgres
+docker rm redmine
+
+docker container run -d --name postgres --network redmine_network -v postgres-data:/var/lib/postgresql/data --restart always  -e POSTGRES_PASSWORD='password' -e POSTGRES_DB='redmine'  postgres:latest
+
+docker container run -d --name redmine  --network redmine_network -p 80:3000 --restart always  -v redmine-data:/usr/src/redmine/files -e REDMINE_DB_POSTGRES='postgres'  -e REDMINE_DB_DATABASE='redmine'  -e REDMINE_DB_PASSWORD='password'   redmine:latest
+```
