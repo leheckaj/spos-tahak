@@ -648,4 +648,10 @@ docker container run -d --name redmine  --network redmine_network -p 85:3000 --r
 IP_ADRESA:85
 admin/admin
 heslo se pak mění na třeba: raspberry
+
+docker container stop redmine
+docker container stop postgres
+
+docker container start postgres
+docker container start redmine
 ```
