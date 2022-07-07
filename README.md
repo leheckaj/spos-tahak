@@ -646,4 +646,5 @@ docker container run -d --name postgres --network redmine_network -v postgres-da
 docker container run -d --name redmine  --network redmine_network -p 85:3000 --restart always  -v redmine-data:/usr/src/redmine/files -e REDMINE_DB_POSTGRES='postgres'  -e REDMINE_DB_DATABASE='redmine'  -e REDMINE_DB_PASSWORD='password'   redmine:latest
 
 IP_ADRESA:85
+admin/admin
 ```
