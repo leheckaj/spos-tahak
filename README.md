@@ -621,7 +621,8 @@ mount -t cifs //localhost/share1 /mnt/test -o username=jindra
 ## Docker + Redmine (postgres)
 ```bash
 apt-get update
-
+apt-get install git
+apt-get install sudo
 apt-get install \
     ca-certificates \
     curl \
@@ -643,22 +644,17 @@ mkdir /sys/fs/cgroup/systemd
 
 mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
 
-docker rm postgres
-docker rm redmine
 
-docker container run -d --name postgres --network redmine_network -v postgres-data:/var/lib/postgresql/data --restart always  -e POSTGRES_PASSWORD='password' -e POSTGRES_DB='redmine'  postgres:latest
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+git clone https://gitlab.com/xavki/presentations-dockercompose.git
+cd presentations-dockercompose/23-redmine
 
-docker container run -d --name redmine  --network redmine_network -p 85:3000 --restart always  -v redmine-data:/usr/src/redmine/files -e REDMINE_DB_POSTGRES='postgres'  -e REDMINE_DB_DATABASE='redmine'  -e REDMINE_DB_PASSWORD='password'   redmine:latest
+docker-compose up -d
 
-IP_ADRESA:85
 admin/admin
 heslo se pak mění na třeba: raspberry
-
-docker container stop redmine
-docker container stop postgres
-
-docker container start postgres
-docker container start redmine
 ```
 
 ## Užitečné návody
