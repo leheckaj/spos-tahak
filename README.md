@@ -657,6 +657,12 @@ admin/admin
 heslo se pak mění na třeba: raspberry
 ```
 
+## OpenVPN + SSH
+```
+https://www.virtualizationhowto.com/2021/01/copy-files-to-windows-subsystem-for-linux-wsl2-with-ssh/
+https://medium.com/@gurayy/set-up-a-vpn-server-with-docker-in-5-minutes-a66184882c45
+```
+
 ## Užitečné návody
 ```bash
 Nextcloud
