@@ -665,6 +665,10 @@ https://medium.com/@gurayy/set-up-a-vpn-server-with-docker-in-5-minutes-a6618488
 
 ## Užitečné návody
 ```bash
+Centreon
+https://docs.centreon.com/docs/installation/installation-of-a-central-server/using-packages/
+
+
 Nextcloud
 https://ubunlog.com/cs/como-instalar-nextcloud-16-en-ubuntu-y-derivados/
 ```
