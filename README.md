@@ -670,6 +670,8 @@ https://docs.centreon.com/docs/installation/installation-of-a-central-server/usi
 
 Ubuntu BTRFS - snapshot + rollback 
 https://www.howtoforge.com/rollback-to-a-working-state-with-btrfs-plus-apt-btrfs-snapshot-on-ubuntu-12.10
+Pozor na Docker + BTRFS
+https://www.reddit.com/r/docker/comments/mba2c7/how_do_i_make_docker_work_nicely_with_btrfs_host/
 
 Nextcloud
 https://ubunlog.com/cs/como-instalar-nextcloud-16-en-ubuntu-y-derivados/
