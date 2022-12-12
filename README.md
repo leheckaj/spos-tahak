@@ -668,6 +668,8 @@ https://medium.com/@gurayy/set-up-a-vpn-server-with-docker-in-5-minutes-a6618488
 Centreon
 https://docs.centreon.com/docs/installation/installation-of-a-central-server/using-packages/
 
+Ubuntu BTRFS - snapshot + rollback 
+https://www.howtoforge.com/rollback-to-a-working-state-with-btrfs-plus-apt-btrfs-snapshot-on-ubuntu-12.10
 
 Nextcloud
 https://ubunlog.com/cs/como-instalar-nextcloud-16-en-ubuntu-y-derivados/
