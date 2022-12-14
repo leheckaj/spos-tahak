@@ -673,6 +673,9 @@ https://www.howtoforge.com/rollback-to-a-working-state-with-btrfs-plus-apt-btrfs
 Pozor na Docker + BTRFS
 https://www.reddit.com/r/docker/comments/mba2c7/how_do_i_make_docker_work_nicely_with_btrfs_host/
 
+Migrace stroje Ubuntu / Debian:
+https://www.digitalocean.com/community/tutorials/how-to-migrate-linux-servers-part-1-system-preparation
+
 Nextcloud
 https://ubunlog.com/cs/como-instalar-nextcloud-16-en-ubuntu-y-derivados/
 ```
