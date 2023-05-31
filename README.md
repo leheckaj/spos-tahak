@@ -74,7 +74,7 @@ iptables -A INPUT -s  147.228.0.0/16  -p tcp --dport 22 -j ACCEPT
 iptables -A INPUT -p tcp --dport 22  -j DROP
 
 iptables-save > /etc/network/iptables
-echo "post-up /sbin/iptables-restore /etc/network/iptables" > /etc/network/interfaces
+echo "post-up /sbin/iptables-restore /etc/network/iptables" >> /etc/network/interfaces
 
 ```
 
