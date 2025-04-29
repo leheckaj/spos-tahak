@@ -313,6 +313,23 @@ proxy_read_timeout         300;" > /etc/nginx/proxy.include
 
 service nginx reload
 service nginx restart
+
+```
+
+How to create snakeoil certs:
+```bash
+
+sudo mkdir -p /etc/nginx/snippets
+sudo mkdir /etc/ssl/private
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout /etc/ssl/private/nginx-selfsigned.key \
+  -out /etc/ssl/certs/nginx-selfsigned.crt \
+  -subj "/C=CZ/ST=Test/L=Test/O=Dev/CN=localhost"
+
+echo "ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;" > /etc/nginx/snippets/snakeoil.conf
+
+
 ```
 
 ## MySQL
